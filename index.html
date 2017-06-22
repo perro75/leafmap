@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Leafmap</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Add leaflet-->
+	<link rel="stylesheet" href="leaflet/leaflet.css"/>
+    <script src="leaflet/leaflet.js"></script>
+	
+	<script src="leaflet/leafmap.js"></script>
+	
+
+	<style>
+		#map {
+			width: 600px;
+			height: 400px;
+		}
+	</style>
+
+	<style>body { padding: 0; margin: 0; } html, body, #map { height: 100vh; width: 100vw; }</style>
+</head>
+
+<body>
+
+<div id='map'></div>
+
+<script>
+    var customControl = L.Control.extend({
+        options: {
+            position: 'topleft' 
+            //control position - allowed: 'topleft', 'topright', 'bottomleft', 'bottomright'
+        },
+        
+        onAdd: function (map) {
+        var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+ 
+    container.style.backgroundColor = 'yellow';
+	container.style.backgroundImage = "url('http://localhost/leaflet/images/position.png')";
+	container.style.backgroundSize = "27px 27px";
+    container.style.width = '27px';
+    container.style.height = '27px';
+  	container.onclick = function(){
+     locateMap();
+    }
+    return container;
+  }   
+        ,
+        
+    });
+
+	var map = createLeafletMap();
+	locateMap();
+	
+</script>
+
+</body>
+</html>
